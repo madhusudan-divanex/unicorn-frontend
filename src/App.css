@@ -1,0 +1,55 @@
+/* ===== HIDE SPECIFIC TRADINGVIEW LEFT TOOLBAR BUTTONS ===== */
+
+/* Hide Annotation tools (brush, arrow, marker, etc.) */
+[data-name="linetool_group-annotation"] {
+    display: none !important;
+}
+
+/* Hide Text tools */
+[data-name="linetool_group-text"] {
+    display: none !important;
+}
+
+/* Hide Icons tool */
+[data-name="linetool_group-icons"] {
+    display: none !important;
+}
+
+/* Hide Measure tool */
+[data-name="linetool_group-measure"] {
+    display: none !important;
+}
+
+/* Hide Zoom tools */
+[data-name="linetool_group-zoom"] {
+    display: none !important;
+}
+
+/* Hide Geometric Shapes (rectangle, circle, triangle) */
+[data-name="linetool_group-geom"] {
+    display: none !important;
+}
+
+/* Hide Brush/Pencil tools */
+[data-name="linetool_group-paint"] {
+    display: none !important;
+}
+.dropdown-pbhJWNrt{
+    display: none !important;
+}
+/* Hide specific TradingView tools inside left toolbar */
+div[class*="drawingToolbar"] .control- .button-,
+div[id*="drawingToolbar"] .control- .button- {
+    display: none !important;
+}
+button[aria-label="Text"] {
+  display: none !important;
+}
+.group-BfVZxb4b{
+    display: none !important
+}
+.chart-toolbar.chart-controls-bar .toolbar-BXXUwft2{
+    display: none;
+}.toolButtonMagnet-wg76fIbD{
+    display: none;
+}
