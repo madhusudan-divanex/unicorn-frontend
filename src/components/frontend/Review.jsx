@@ -20,7 +20,7 @@ function Review() {
             const userReview = rData.reviews?.filter(item => item?.type == 'user')
             setReviewsData(userReview)
             const data = await getApiData('get-general-data')
-            
+
             setGeneralData(data.generalData)
         }
         getData()
@@ -53,7 +53,7 @@ function Review() {
                             <div>
                                 <h2>{t('review')}</h2>
                                 <p>
-                                    {defaultLang=='en'? generalData?.reviewDesc : generalData?.hindiReviewDesc}{" "}
+                                    {defaultLang == 'en' ? generalData?.reviewDesc : generalData?.hindiReviewDesc}{" "}
                                 </p>
                             </div>
                         </div>
@@ -68,9 +68,9 @@ function Review() {
             <section className="trusted-section" data-aos="fade-up" >
                 <div className="container">
                     <div className="mb-5">
-                        <h2 className="text-center">{defaultLang=='en'? generalData?.testimonial?.heading :generalData?.testimonial?.hindiHeading} </h2>
+                        <h2 className="text-center">{defaultLang == 'en' ? generalData?.testimonial?.heading : generalData?.testimonial?.hindiHeading} </h2>
                         <h3 className="text-center">
-                            {defaultLang=='en'?  generalData?.testimonial?.subHeading :generalData?.testimonial?.hindiSubHeading}
+                            {defaultLang == 'en' ? generalData?.testimonial?.subHeading : generalData?.testimonial?.hindiSubHeading}
                         </h3>
                     </div>
                     <div className="row">
@@ -104,9 +104,10 @@ function Review() {
                                     {firstHalf?.map((item, index) => (
                                         <SplideSlide key={index}>
                                             <div className="testimonial-card slide-right">
-                                                <img src={`${base_url}/${item.image}`} alt="User" />
-                                                <p className="my-3">{defaultLang=='en'?  item?.reviewDesc : item?.hindiReviewDesc}</p>
+                                                {/* <img src={`${base_url}/${item.image}`} alt="User" /> */}
+                                                <p className="my-3">{defaultLang == 'en' ? item?.reviewDesc : item?.hindiReviewDesc}</p>
                                                 <h6>{item?.reviewUser}</h6>
+                                                <p className='mb-0 fz-16'>{defaultLang == "en" ? item?.locationEnglish : item?.locationHindi}</p>
                                             </div>
                                         </SplideSlide>
                                     ))}
@@ -145,9 +146,10 @@ function Review() {
                                     {secondHalf?.map((item, index) => (
                                         <SplideSlide key={index}>
                                             <div className="testimonial-card slide-right">
-                                                <img src={`${base_url}/${item.image}`} alt="User" />
-                                                <p className="my-3">{defaultLang=='en'? item?.reviewDesc :item?.hindiReviewDesc}</p>
+                                                {/* <img src={`${base_url}/${item.image}`} alt="User" /> */}
+                                                <p className="my-3">{defaultLang == 'en' ? item?.reviewDesc : item?.hindiReviewDesc}</p>
                                                 <h6>{item?.reviewUser}</h6>
+                                                <p className='mb-0 fz-16'>{defaultLang == "en" ? item?.locationEnglish : item?.locationHindi}</p>
                                             </div>
                                         </SplideSlide>
                                     ))}

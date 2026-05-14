@@ -36,24 +36,24 @@ function Faq() {
         }
     }, [defaultLang]);
 
-        useEffect(() => {
+    useEffect(() => {
         AOS.init({
             duration: 1000,
             once: false,
         });
     }, []);
-    
+
     return (
         <>
 
 
-            <section className='unicorn-main-section all-hm-banner '  data-aos="fade-up">
+            <section className='unicorn-main-section all-hm-banner ' data-aos="fade-up">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-lg-8">
                             <div className='contact-content nw-main-content text-center'>
-                                <h2 className=''>FAQ</h2>
-                                <p>is a modern financial trading platform offering fast, secure, and transparent binary <span className='d-lg-block d-sm-inline'>options and forex trading.</span> </p>
+                                <h2 className=''>{t('faq')}</h2>
+                                {/* <p>is a modern financial trading platform offering fast, secure, and transparent binary <span className='d-lg-block d-sm-inline'>options and forex trading.</span> </p> */}
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ function Faq() {
 
             </section> */}
 
-            <section className='unicorn-faq-section'  data-aos="fade-up">
+            <section className='unicorn-faq-section' data-aos="fade-up">
                 <div className='container'>
                     <div className='row'>
                         <div className='grow-about-content text-center'>
@@ -89,10 +89,7 @@ function Faq() {
                                 <span className='grow-title'>FAQ</span>
                             </p>
                             <h4>
-                                Find Quick Answers to Common
-                                <span className='d-lg-block d-sm-inline'>
-                                    Unicorn Options Questions.
-                                </span>
+                                {defaultLang == "en" ? generalData?.faqDesc : generalData?.hindiFaqDesc}
                             </h4>
                         </div>
                     </div>
@@ -245,7 +242,7 @@ function Faq() {
 
                                                         <span>{defaultLang == 'en' ? faq?.question : faq?.hindiQuestion}</span>
                                                         {/* <i className="fas fa-chevron-down" /> */}
-                                                        
+
                                                     </div>
                                                     <div className="faq-answer">
                                                         {openFaq === uniqueKey && (defaultLang == 'en' ? faq?.answer : faq?.hindiAnswer)}

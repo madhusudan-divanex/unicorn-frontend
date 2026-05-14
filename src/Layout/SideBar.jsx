@@ -11,6 +11,8 @@ import { MdLeaderboard } from "react-icons/md";
 import SearchTrade from "../Trade/SearchTrade";
 import LeaderBoard from "../Trade/LeaderBoard";
 import Wallet from "../Trade/Wallet";
+import Referral from "../Trade/Referral";
+import { getApiData } from "../services/api";
 
 function SideBar({ bidData }) {
   // console.log("biddat",bidData)
@@ -18,6 +20,7 @@ function SideBar({ bidData }) {
   const [leaderboardOpen, setLeaderboardOpen] = useState(false);
   const [hoverData, setHoverData] = useState({})
   const [searchShow, setSearchShow] = useState(false)
+  const [referralOpen, setReferralOpen] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const { userData, loading, error, userTrade, totalUserTrade } = useSelector((state) => state.user);
@@ -100,6 +103,14 @@ function SideBar({ bidData }) {
       changeLanguage(userSetting.language == 'english' ? 'en' : 'hi');
     }
   }, [userSetting]);
+  const [generalData, setGeneralData] = useState({})
+  useEffect(() => {
+    async function getData() {
+      const gData = await getApiData('get-general-data')
+      setGeneralData(gData.generalData)
+    }
+    getData()
+  }, [])
 
   return (
     <>
@@ -218,8 +229,8 @@ function SideBar({ bidData }) {
             </div>
           </div>}
         <li className="nav-item nav-item-btm-trade">
-          <NavLink to="#" className="nav-link nav-trde-btm-link text-white" data-bs-toggle="modal"
-            data-bs-target="#addSalesModals"><img src="/assets/images/social-media.png" alt="" /> {t('referral')}</NavLink>
+          <button to="#" className="nav-link nav-trde-btm-link text-white" data-bs-toggle="modal"
+            data-bs-target="#addSalesModals"><img src="/assets/images/social-media.png" alt="" /> {t('referral')}</button>
         </li>
       </ul>
       <div className="mobile-bottom-nav">
@@ -486,7 +497,55 @@ function SideBar({ bidData }) {
       <Wallet show={show} handleClose={handleClose} />
       <LeaderBoard leaderboardOpen={leaderboardOpen} handleClose={handleLeaderClose} />
 
+      <div
+        className="modal fade"
+        id="addSalesModals"
+        tabIndex="-1"
+        aria-labelledby="addSalesModalLabels"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg modal-dialog-centered  refferal-main-crd">
+          <div className="modal-content modal-coupan-content refferal-main-popup-bx">
+            <div className="modal-header modal-coupan-header ">
+              <div>
+                <h5 className="modal-title title-heading" id="addSalesModalLabels">
+                  Connect with Us Across Social Networks!
+                </h5>
+              </div>
+              <button
+                type="button"
+                className=" ms-auto text-white"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <FontAwesomeIcon icon={faClose} />
+              </button>
+            </div>
+            <div className="modal-body  ">
+              <div className="referral-banner-pic">
+                <img src="/assets/images/contact-frm.png" alt="" className="referral-bnner-logo" />
+              </div>
 
+              <div className="contct-frm-sec d-flex flex-column align-items-center justify-content-center">
+                <a target='_blank' href={generalData?.socialNetwork?.facebook} className="social-btn social-facebook">
+                  Facebook <i className="fab fa-facebook-f" />
+                </a>
+                <a target='_blank' href={generalData?.socialNetwork?.instagram} className="social-btn social-instagram">
+                  Instagram <i className="fab fa-instagram" />
+                </a>
+                <a target='_blank' href={generalData?.socialNetwork?.twitter} className="social-btn social-twitter">
+                  Twitter <i className="fab fa-twitter" />
+                </a>
+              </div>
+
+            </div>
+
+            <div className="modal-footer modal-coupan-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
     </>
 
   )

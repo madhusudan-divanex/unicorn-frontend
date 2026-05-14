@@ -144,9 +144,9 @@ function About() {
                                 <p style={{ color: "#BDBDBD" }}>{defaultLang == "en" ? aboutData?.aboutInfo?.desc :
                                     aboutData?.aboutInfo?.hindiDesc}</p>
 
-                                <div className='mt-5 unicorn-mb-bx'>
+                                {/* <div className='mt-5 unicorn-mb-bx'>
                                     <Link to={'/about'} className='thm-lg-btn'>Learn More</Link>
-                                </div>
+                                </div> */}
                             </div>
 
 

@@ -15,7 +15,7 @@ import { CheckCircle } from "lucide-react";
 
 
 function Referral() {
-    const userId=JSON.parse(localStorage.getItem('userId'))
+    const userId = JSON.parse(localStorage.getItem('userId'))
 
     const [open, setOpen] = useState(false);
 
@@ -935,7 +935,7 @@ function Referral() {
                                                 data-bs-dismiss="modal"
                                                 aria-label="Close"
                                             >
-                                                <FontAwesomeIcon icon={faClose}/>
+                                                <FontAwesomeIcon icon={faClose} />
                                             </button>
                                         </div>
                                         <div className="modal-body login-section py-0">
@@ -1014,7 +1014,7 @@ function Referral() {
                                                 data-bs-dismiss="modal"
                                                 aria-label="Close"
                                             >
-                                                <FontAwesomeIcon icon={faClose}/>
+                                                <FontAwesomeIcon icon={faClose} />
                                             </button>
                                         </div>
                                         <div className="modal-body login-section py-0">
@@ -1077,7 +1077,7 @@ function Referral() {
                                                 data-bs-dismiss="modal"
                                                 aria-label="Close"
                                             >
-                                                <FontAwesomeIcon icon={faClose}/>
+                                                <FontAwesomeIcon icon={faClose} />
                                             </button>
                                         </div>
                                         <div className="modal-body  ">

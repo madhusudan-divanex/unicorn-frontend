@@ -94,7 +94,7 @@ function Deposit() {
     async function getPanelData() {
         try {
             const data = await getWebisteSetting();
-            setFirstBonus(data.firstBonus);
+            setFirstBonus(data.depositBonus);
 
         } catch (error) { }
     }
@@ -364,6 +364,10 @@ function Deposit() {
                 return toast.error("Please fill all the fields")
             }
         }
+        console.log(depositForm?.amount, convertAmount(termData?.minDepositeAmount, 'usd', userData.currency))
+        if (depositForm?.amount < convertAmount(termData?.minDepositeAmount, 'usd', userData.currency)) {
+            return toast.error(`Minimum deposit amount is ${convertAmount(termData?.minDepositeAmount, 'usd', userData.currency)}`)
+        }
         if (!depositForm.termAndCondition.withRegistered || !depositForm.termAndCondition.transactionId || !depositForm.termAndCondition.screenshot || !depositForm.termAndCondition.falseSubmission) {
             return toast.error("Please accept all the terms and conditions")
         }
@@ -389,10 +393,15 @@ function Deposit() {
                     name: '',
                     screenShot: '', transactionId: '',
                     scName: null, notes: '', method: '', paymentTime: null,
-                    promoCode: ''
+                    promoCode: '',
+                    termAndCondition: {
+                        withRegistered: false,
+                        transactionId: false,
+                        screenshot: false,
+                        falseSubmission: false
+                    }
                 });
                 dispatch(fetchUserData())
-                setBtcOpen(false)
                 toast.success("Your deposit request has been sent!");
             } else {
                 toast.error(result.message);
